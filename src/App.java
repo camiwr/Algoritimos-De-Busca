@@ -1,16 +1,18 @@
 import java.util.List;
 
+import entidades.BuscasNaoInformadas;
+import entidades.No;
+import enums.TipoBuscaNaoInformada;
+
 public class App {
     public static void main(String[] args) throws Exception {
         No inicial = new No("Arad", null, null, 0);
         No objetivo = new No("Bucharest", null, null, 0);
 
         BuscasNaoInformadas busca = new BuscasNaoInformadas();
+        List<No> caminho = busca.buscar(inicial, objetivo, TipoBuscaNaoInformada.PROFUNDIDADE);
 
-        //Teste da Busca em largura
-        // Sequencia que deve aparecer: [Arad, Sibiu, Fagaras, Bucharest]
-        List<No> caminho = busca.buscaEmLargura(inicial, objetivo);
-
+        // busca em profundidade
         if (caminho.isEmpty()) {
             System.out.println("Nenhum caminho encontrado.");
         } else {
