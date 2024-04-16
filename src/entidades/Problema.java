@@ -66,6 +66,10 @@ public class Problema {
         heuristicaDistancias.put("Neamt", 234);
     }
 
+    public Map<String, Integer> getAdjacentes(String cidade) {
+        return mapaRomenia.getOrDefault(cidade, Map.of());
+    }
+
     // retorna uma lista de ações possíveis (cidades acessíveis) a partir de um estado dado.
     public List<String> acoes(String estado) {
         return new ArrayList<>(mapaRomenia.getOrDefault(estado, Map.of()).keySet());

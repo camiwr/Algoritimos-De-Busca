@@ -2,6 +2,7 @@ package entidades;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class No {
     private String estado;
@@ -16,6 +17,7 @@ public class No {
         this.custo = custo;
     }
 
+
     // Retorna o nó filho
     public No noFilho(Problema problema, String acao) {
         String proximoEstado = problema.transicao(this.estado, acao);
@@ -27,15 +29,26 @@ public class No {
     }
 
     // Retorna todos os filhos
+    // public List<No> explorar(Problema problema) {
+    //     List<No> nos = new ArrayList<>();
+    //     for (String acao : problema.acoes(this.estado)) {
+    //         No filho = noFilho(problema, acao);
+    //         if (filho != null) {
+    //             nos.add(filho);
+    //         }
+    //     }
+    //     return nos;
+    // }
+
     public List<No> explorar(Problema problema) {
-        List<No> nos = new ArrayList<>();
-        for (String acao : problema.acoes(this.estado)) {
-            No filho = noFilho(problema, acao);
-            if (filho != null) {
-                nos.add(filho);
-            }
+        List<No> filhos = new ArrayList<>();
+        Map<String, Integer> adjacentes = problema.getAdjacentes(this.estado);
+        for (Map.Entry<String, Integer> entrada : adjacentes.entrySet()) {
+            String estadoFilho = entrada.getKey();
+            int custoAcao = entrada.getValue();
+            filhos.add(new No(estadoFilho, this, "Move to " + estadoFilho, this.custo + custoAcao));
         }
-        return nos;
+        return filhos;
     }
 
     // Retorna uma lista nós formando o caminho percorrido
