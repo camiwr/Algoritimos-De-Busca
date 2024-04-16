@@ -1,8 +1,8 @@
 package entidades;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
 
 public class No {
     private String estado;

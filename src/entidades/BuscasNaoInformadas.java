@@ -1,19 +1,18 @@
 package entidades;
 
+import enums.TipoDeBusca;
+
 import java.util.Set;
-import java.util.List;
 import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.List;
 import java.util.Stack;
-import java.util.ArrayList;
-
-import enums.TipoBuscaNaoInformada;
-
 import java.util.Queue;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 
 public class BuscasNaoInformadas implements Busca {
     private Map<String, Map<String, Integer>> mapaRomenia;
@@ -27,7 +26,7 @@ public class BuscasNaoInformadas implements Busca {
     }
 
     @Override
-    public List<No> buscar(No inicial, No objetivo, TipoBuscaNaoInformada tipo) {
+    public List<No> buscar(No inicial, No objetivo, TipoDeBusca tipo) {
         switch (tipo) {
             case LARGURA:
                 return buscaEmLargura(inicial, objetivo);

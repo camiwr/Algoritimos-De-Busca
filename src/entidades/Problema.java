@@ -1,21 +1,19 @@
 package entidades;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.List;
+import java.util.HashMap;
+import java.util.ArrayList;
 
 public class Problema {
     private String estadoInicial;
     private String estadoFinal;
     private final Map<String, Map<String, Integer>> mapaRomenia = new HashMap<>();
-    private final Map<String, Integer> heuristicaDistancias = new HashMap<>();
 
     public Problema(String estadoInicial, String estadoFinal) {
         this.estadoInicial = estadoInicial;
         this.estadoFinal = estadoFinal;
         inicializarMapa();
-        inicializarHeuristica();
     }
     
     private void inicializarMapa() {
@@ -42,29 +40,6 @@ public class Problema {
         mapaRomenia.put("Neamt", Map.of("Iasi", 87));
     }
 
-    private void inicializarHeuristica() {
-
-        heuristicaDistancias.put("Arad", 366);
-        heuristicaDistancias.put("Zerind", 374);
-        heuristicaDistancias.put("Oradea", 380);
-        heuristicaDistancias.put("Sibiu", 253);
-        heuristicaDistancias.put("Timisoara", 329);
-        heuristicaDistancias.put("Lugoj", 244);
-        heuristicaDistancias.put("Mehadia", 241);
-        heuristicaDistancias.put("Drobeta", 242);
-        heuristicaDistancias.put("Craiova", 160);
-        heuristicaDistancias.put("Rimnicu Vilcea", 193);
-        heuristicaDistancias.put("Fagaras", 176);
-        heuristicaDistancias.put("Pitesti", 100);
-        heuristicaDistancias.put("Bucharest", 0);
-        heuristicaDistancias.put("Giurgiu", 77);
-        heuristicaDistancias.put("Urziceni", 80);
-        heuristicaDistancias.put("Hirsova", 151);
-        heuristicaDistancias.put("Eforie", 161);
-        heuristicaDistancias.put("Vaslui", 199);
-        heuristicaDistancias.put("Iasi", 226);
-        heuristicaDistancias.put("Neamt", 234);
-    }
 
     public Map<String, Integer> getAdjacentes(String cidade) {
         return mapaRomenia.getOrDefault(cidade, Map.of());
@@ -91,10 +66,7 @@ public class Problema {
             return mapaRomenia.get(estado1).get(estado2);
         }
         return Integer.MAX_VALUE;
-        // Retorna um valor alto se não houver caminho direto
     }
-    
-    
     
 // gets e sets
     public String getEstadoInicial() {
@@ -121,8 +93,4 @@ public class Problema {
         return mapaRomenia;
     }
 
-
-    public Map<String, Integer> getHeuristicaDistancias() {
-        return heuristicaDistancias;
-    }
 }
