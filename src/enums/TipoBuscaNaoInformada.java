@@ -2,5 +2,8 @@ package enums;
 
 public enum TipoBuscaNaoInformada {
     LARGURA,
-    PROFUNDIDADE
+    PROFUNDIDADE,
+    CUSTO_UNIFORME,
+    PROFUNDIDADE_LIMITADA,
+    APROFUNDAMENTO_ITERATIVO
 }

@@ -9,7 +9,7 @@ public class No {
     private String acao;
     private int custo;
 
-    public No(String estado, No pai, String acao, int custo){
+    public No(String estado, No pai, String acao, int custo) {
         this.estado = estado;
         this.pai = pai;
         this.acao = acao;
@@ -51,7 +51,7 @@ public class No {
     public List<String> solucao() {
         List<String> solucao = new ArrayList<>();
         No noAtual = this;
-        while (noAtual.pai != null) { // Ignora o estado inicial sem ação
+        while (noAtual.pai != null) { 
             solucao.add(0, noAtual.acao);
             noAtual = noAtual.pai;
         }

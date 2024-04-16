@@ -9,17 +9,23 @@ public class App {
         No inicial = new No("Arad", null, null, 0);
         No objetivo = new No("Bucharest", null, null, 0);
 
-        BuscasNaoInformadas busca = new BuscasNaoInformadas();
-        List<No> caminho = busca.buscar(inicial, objetivo, TipoBuscaNaoInformada.PROFUNDIDADE);
+        BuscasNaoInformadas busca = new BuscasNaoInformadas(5, 0);
 
-        // busca em profundidade
+        
+        List<No> caminhoLimitado = busca.buscar(inicial, objetivo, TipoBuscaNaoInformada.PROFUNDIDADE_LIMITADA);
+        printCaminho(caminhoLimitado, "Profundidade Limitada");
+    }
+
+    private static void printCaminho(List<No> caminho, String tipoBusca) {
         if (caminho.isEmpty()) {
-            System.out.println("Nenhum caminho encontrado.");
+            System.out.println("Nenhum caminho encontrado usando " + tipoBusca + ".");
         } else {
-            System.out.println("Caminho encontrado:");
+            System.out.println("Caminho encontrado usando:" + tipoBusca + ":");
             for (No no : caminho) {
                 System.out.println(no.getEstado());
             }
         }
+
     }
+
 }
